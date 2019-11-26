@@ -29,5 +29,5 @@ Route::get('/profiles/{user}', 'ProfileController@show')->name('profile');
 
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store');
 
-Route::get('/threads/{channels}','ChannelsControllor@show');
+//Route::get('threads/showchannels/{channel_id}','ChannelsControllor@show');
 
