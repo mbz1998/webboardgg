@@ -24,8 +24,6 @@
         <style>
         body {
             background-image: url(@yield('bg',"img/bg.jpg"));
-
-
         }
     </style>
 </head>
@@ -58,28 +56,18 @@
                             </a>
                         </li>
                         @endguest
-                        <li class="nav-item">
-                        <a class="nav-link" href="/threads?by={{auth()->user()->channel_id}}">
-                                <font color="#EEEEEE"> อาหาร </font>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="/threads?by={{auth()->user()->channel_id}}">
-                                <font color="#EEEEEE"> เครื่องดื่ม </font>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="/threads?by={{auth()->user()->channel_id}}">
-                                <font color="#EEEEEE"> ท่องเที่ยว </font>
-                            </a>
-                            </a>
-                        </li>
-                    </ul>
-
+                        <div class="card-body">
+                        <form method="GET" action="/threads">
+                            {{ csrf_field() }}
+                            </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+
+
+
                         <!-- Authentication Links -->
                         @guest
+                        <ul class="navbar-nav ml-auto">
                         <li><a class="nav-link" href="{{ route('login') }}">
                         <!DOCTYPE html>
                         <html lang="{{ app()->getLocale() }}">
@@ -96,13 +84,30 @@
                                                      document.getElementById('logout-form').submit();">
                                     ออกจากระบบ
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </div>
                         </li>
                         @endguest
+                        <div class="form-group">
+                                <select name="channel_id" id="channel_id" class="form-control" required>
+                                    <option value="">เลือกหมวดหมู่</option>
+                                    <option value="1"> อาหาร
+                                        </option>
+                                        <option value="2"> เครื่องดื่ม
+                                        </option>
+                                        <option value="3"> ท่องเที่ยว
+                                        </option>
+                                    @foreach ($channels as $channel)
+                                        <option value="{{ $channel->id }}" {{ old('channel_id') == $channel->id ? 'selected' : '' }}>
+                                            {{ $channel->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">เลือก</button>
                     </ul>
                 </div>
             </div>
