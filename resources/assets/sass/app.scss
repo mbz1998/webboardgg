@@ -1,0 +1,66 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.border-none {
+  border-style: none;
+}
+.border-b {
+  border-bottom: 1px solid $border-color;
+}
+.text-xs-muted {
+  font-size: .75rem;
+  color: $gray-500;
+}
+[v-cloak] { display: none; }
+// Card
+.card .card-header {
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+}
+.card h3.card-title {
+  font-size: 1.125rem;
+  margin: 0.5rem 0;
+}
+// Thread
+.thread-show .card .card-header {
+  padding: 15px 22px;
+}
+.thread-show .thread-title {
+  font-size: 1.575rem;
+}
+.reply-list .avatar {
+  width: 48px;
+  height: 48px;
+}
+.profile-card {
+  background-color: #e9ecef;
+  .avatar {
+    width: 100px;
+  }
+}
+@media (max-width: 767px) {
+  .profile-card .avatar {
+    width: 72px;
+  }
+}
+.sidebar, .main-content {
+  padding-top: 1.25rem;
+}
+.main-content .pagination {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.sidebar {
+  .menu-list {
+    a {
+      color: #667d99;
+    }
+  }
+}
